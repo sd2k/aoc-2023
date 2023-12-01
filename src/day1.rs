@@ -1,18 +1,8 @@
 use aoc_runner_derive::{aoc, aoc_generator};
 
 fn part1_parse_line(line: &str) -> u32 {
-    let first = line
-        .chars()
-        .find(char::is_ascii_digit)
-        .unwrap()
-        .to_digit(10)
-        .unwrap();
-    let last = line
-        .chars()
-        .rfind(char::is_ascii_digit)
-        .unwrap()
-        .to_digit(10)
-        .unwrap();
+    let first = line.chars().find_map(|x| x.to_digit(10)).unwrap();
+    let last = line.chars().rev().find_map(|x| x.to_digit(10)).unwrap();
     first * 10 + last
 }
 
